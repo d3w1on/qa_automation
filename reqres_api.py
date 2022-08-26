@@ -21,7 +21,6 @@ def register_successful(payload):
 #   "email": "eve.holt@reqres.in",
 #   "password": "pistol"
 # }
-
 #######################################
 def get_users_list(params):
     return requests.get(f"{url}/users", params=params)
@@ -30,12 +29,26 @@ def get_users_list(params):
 # Params Sample below
 
 # params = {"page": 1}
-
 #######################################
 def get_single_user(userId):
     return requests.get(f"{url}/users/{userId}")
 
 
 # userId as int value in range 1 - 12
+#######################################
 
+def login(payload):
+    users.user.update(json.loads(requests.post(f"{url}/login", data=payload).text))
+    return requests.post(f"{url}/login", data=payload)
+
+
+# Payload Sample below
+#
+# payload = {
+#   "email": "eve.holt@reqres.in",
+#   "password": "pistol"
+# }
+
+print(login(users.user).text)
+print(users.user)
 #######################################
