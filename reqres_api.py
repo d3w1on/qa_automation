@@ -48,7 +48,22 @@ def login(payload):
 #   "email": "eve.holt@reqres.in",
 #   "password": "pistol"
 # }
+########################################
+def create_user(body):
+    return requests.post(f"{url}/users", data=body)
 
-print(login(users.user).text)
-print(users.user)
+# Body Sample below
+#
+# body = {
+#     "name": "morpheus",
+#     " job": "leader"
+# }
+###########################################
+
+
+print(create_user(body = {
+    "key": "morpheus",
+    "value": "leader"
+}).text)
+
 #######################################
